@@ -5,3 +5,5 @@
 
 ### Start server
 `npm run dev`
+
+Default server endpoint is `app.js` 
