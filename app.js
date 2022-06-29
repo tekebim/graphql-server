@@ -24,7 +24,7 @@ const options = {
 }
 
 mongoose.connect(uri, options)
-  .then(() => app.listen(3111, console.log('server ok!')))
+  .then(() => app.listen(process.env.PORT, console.log('server ok!')))
   .catch(error => {
     throw error
   });
