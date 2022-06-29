@@ -24,8 +24,8 @@ const Resolvers = {
     // const {title, plot} = args.MovieInput;
 
     const movie = new MovieModel({
-      title: args.MovieInput.title,
-      plot: args.MovieInput.plot
+      title: args.movie.title,
+      plot: args.movie.plot
     });
 
     // Attention, lorsque l'on passe un input en tant que paramètre, il faudra d'abord accéder à l'input avant d'accéder aux champs qu'il contient.
