@@ -6,10 +6,22 @@ const Schema = buildSchema(`
     movies: [Movie!]!
   }
   
+  type Mutation {
+    createMovie(movie: MovieInput): Movie
+  }
+  
+  input MovieInput {
+    title: String!,
+    plot: String!
+  }
+  
   type Movie {
     _id: ID!,
     title: String!,
     plot: String!,
     createdAt: String!
   }
+  
 `);
+
+// Un Input avec graphQL permettra de faire passer plusieurs données en une seule via un objet javascript.
