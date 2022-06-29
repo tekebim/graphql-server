@@ -7,10 +7,24 @@ const Resolvers = {
     try {
       const listMovie = await MovieModel.find();
       // find() va récupérer l'entièreté de ce qui correspond au modèle (tous les films). Entre parenthèses on va pouvoir préciser des conditions
-
-      // A ... terminer
+      // TODO : à terminer
     } catch (error) {
       throw error
     }
+  },
+  createMovie: async (args) => {
+    // destructuring variables
+    // const {title, plot} = args.MovieInput;
+
+    const movie = new MovieModel({
+      title: args.MovieInput.title,
+      plot: args.MovieInput.plot
+    });
+
+    // Attention, lorsque l'on passe un input en tant que paramètre, il faudra d'abord accéder à l'input avant d'accéder aux champs qu'il contient.
+    const newMovie = await movie.save();
+    // On sauvegarde l'instance de MovieModel en base de données.
   }
 }
+
+// Avec express-graphql, on ne précise pas Query et Mutation dans le resolvers (graphQL, viendra les valider à partir du schéma)
