@@ -24,6 +24,12 @@ const Resolvers = {
     // Attention, lorsque l'on passe un input en tant que paramètre, il faudra d'abord accéder à l'input avant d'accéder aux champs qu'il contient.
     const newMovie = await movie.save();
     // On sauvegarde l'instance de MovieModel en base de données.
+
+    return {
+      _id: newMovie.id,
+      ...newMovie._doc
+    }
+    // On retourne un objet contenant l'id et les données telles que le titre, le plot
   }
 }
 
