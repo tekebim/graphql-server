@@ -7,7 +7,14 @@ const Resolvers = {
     try {
       const listMovie = await MovieModel.find();
       // find() va récupérer l'entièreté de ce qui correspond au modèle (tous les films). Entre parenthèses on va pouvoir préciser des conditions
-      // TODO : à terminer
+
+      return listMovie.map(movie => {
+        return {
+          _id: movie.id,
+          ...movie._doc,
+          createdAt: new Date(movie._doc.createdAt).toISOString()
+        }
+      });
     } catch (error) {
       throw error
     }
@@ -34,3 +41,4 @@ const Resolvers = {
 }
 
 // Avec express-graphql, on ne précise pas Query et Mutation dans le resolvers (graphQL, viendra les valider à partir du schéma)
+module.exports = Resolvers;
