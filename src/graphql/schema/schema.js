@@ -22,6 +22,13 @@ const Schema = buildSchema(`
     createdAt: String!
   }
   
+  schema {
+    query: Query,
+    mutation: Mutation
+  }
 `);
 
 // Un Input avec graphQL permettra de faire passer plusieurs données en une seule via un objet javascript.
+
+
+module.exports = Schema;
