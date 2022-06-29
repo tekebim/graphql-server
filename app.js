@@ -2,7 +2,7 @@ const express = require('express');
 const {graphqlHTTP} = require('express-graphql'); // graphqlHTTP va nous permettre d'assembler le resolver et le schema. On aura des options supplémentaires telles que graphiQL
 const mongoose = require('mongoose');
 const graphqlSchema = require('./src/graphql/schema/schema');
-const graphqlResolvers = require('./src/graphql/revolvers/resolvers');
+const graphqlResolvers = require('./src/graphql/resolvers/resolvers');
 const dotenv = require('dotenv').config();
 
 const app = express();
@@ -24,7 +24,7 @@ const options = {
 }
 
 mongoose.connect(uri, options)
-  .then(() => app.listen(process.env.PORT, console.log('server ok!')))
+  .then(() => app.listen(process.env.PORT, console.log('\x1b[32m%s\x1b[0m', `Server is now listening http://localhost:${process.env.PORT}`,)))
   .catch(error => {
     throw error
   });
