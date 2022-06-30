@@ -4,8 +4,11 @@ const mongoose = require('mongoose');
 const graphqlSchema = require('./src/graphql/schema/schema');
 const graphqlResolvers = require('./src/graphql/resolvers/resolvers');
 const dotenv = require('dotenv').config();
+const cors = require('cors');
 
 const app = express();
+
+app.use(cors());
 
 app.use(
   "/movie",
