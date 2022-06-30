@@ -3,7 +3,7 @@ const {buildSchema} = require('graphql')
 
 const Schema = buildSchema(`
   type Query {
-    movies: [Movie!]!
+    movies(page:Int): [Movie!]!
   }
   
   type Mutation {

@@ -3,9 +3,10 @@ const MovieModel = require('../../models/movie')
 // Cela nous permettra d'avoir accès à un ensemble de méthode facilitant les communications avec mongodb
 
 const Resolvers = {
-  movies: async () => {
+  movies: async (args) => {
     try {
-      const listMovie = await MovieModel.find();
+      const listMovie = await MovieModel.find().limit(20).skip((args.page - 1) * 20);
+      // const listMovie = await MovieModel.find().sort({_id: -1}).limit(30);
       // find() va récupérer l'entièreté de ce qui correspond au modèle (tous les films). Entre parenthèses on va pouvoir préciser des conditions
 
       return listMovie.map(movie => {
